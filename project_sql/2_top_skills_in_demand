@@ -1,0 +1,30 @@
+-- Find the ranking of skills by determining how often they are mentioned in job postings
+-- NULL counts represent job postings without associated skills
+WITH skill_table AS (
+  SELECT
+    job_id,
+    skills_job_dim.skill_id,
+    skills AS skill_name
+  FROM
+    skills_job_dim
+    LEFT JOIN skills_dim ON skills_dim.skill_id = skills_job_dim.skill_id
+)
+SELECT
+    skill_name,
+    COUNT (job_postings_fact.job_id) AS job_count
+FROM
+    job_postings_fact
+    LEFT JOIN skill_table ON skill_table.job_id = job_postings_fact.job_id
+WHERE
+    job_location = 'Anywhere'
+    AND (job_title_short ILIKE '%data_analyst%'
+    OR job_title_short ILIKE '%business_analyst%')
+GROUP BY
+    skill_name
+ORDER BY
+    job_count DESC
+LIMIT 6;
+
+
+  
+

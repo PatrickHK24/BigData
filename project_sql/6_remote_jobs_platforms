@@ -1,0 +1,52 @@
+
+-- Find job platforms with the highest number of remote Business Analyst and Data Analyst job postings
+SELECT
+    job_via AS job_platform,
+    COUNT(job_id) AS job_published_count
+FROM
+    job_postings_fact
+WHERE
+    job_location = 'Anywhere' AND
+        (job_title_short ILIKE '%data_analyst%' OR job_title_short ILIKE '%business_analyst%')
+GROUP BY
+    job_platform
+ORDER BY
+    job_published_count DESC
+LIMIT 6;
+
+
+-- Find the average salary for the platforms with the highest number of remote Business Analyst and Data Analyst job postings
+SELECT
+    job_via AS job_platform,
+    COUNT(job_id) AS job_published_count,
+    ROUND(AVG(salary_year_avg),0) AS average_salary,
+    SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END) AS jobs_with_salary, -- Count the number of jobs with info
+    SUM(CASE WHEN salary_year_avg IS NULL THEN 1 ELSE 0 END) AS jobs_without_salary, -- Count the number of jobs without info
+    ROUND((SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END)*100.0/COUNT(job_id)),1) AS salary_info_ratio -- calculate the ratio of jobs with salary info as a percentage
+FROM
+    job_postings_fact
+WHERE
+    job_location = 'Anywhere'
+    AND (job_title_short ILIKE '%data_analyst%' OR job_title_short ILIKE '%business_analyst%')
+GROUP BY
+    job_platform
+ORDER BY
+    job_published_count DESC
+LIMIT 6;
+
+-- Find the platforms with the highest number of remote Business Analyst and Data Analyst job postings and their health insurance mentions ratio
+SELECT
+    job_via AS job_platform,
+    COUNT(job_id) AS job_published_count,
+    SUM (CASE WHEN job_health_insurance IS TRUE THEN 1 ELSE 0 END) AS jobs_with_health_insurance,-- Count the number of jobs with health insurance
+    SUM (CASE WHEN job_health_insurance IS FALSE THEN 1 ELSE 0 END) AS jobs_without_health_insurance-- Count the number of jobs without health insurance
+FROM
+    job_postings_fact
+WHERE
+    job_location = 'Anywhere'
+    AND (job_title_short ILIKE '%data_analyst%' OR job_title_short ILIKE '%business_analyst%')
+GROUP BY
+    job_platform
+ORDER BY
+    job_published_count DESC
+LIMIT 6;
