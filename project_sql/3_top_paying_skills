@@ -1,0 +1,48 @@
+-- Find the salary ranking of skills found in the query 2_top_skills_in_demand
+WITH skill_table AS (
+  SELECT
+    job_id,
+    skills_job_dim.skill_id,
+    skills AS skill_name
+  FROM
+    skills_job_dim
+    LEFT JOIN skills_dim ON skills_dim.skill_id = skills_job_dim.skill_id
+)
+SELECT
+    skill_name,
+    COUNT (job_postings_fact.job_id) AS job_count,
+    ROUND(AVG(salary_year_avg),0) AS average_salary
+FROM
+    job_postings_fact
+    LEFT JOIN skill_table ON skill_table.job_id = job_postings_fact.job_id
+WHERE
+    salary_year_avg IS NOT NULL
+    AND job_location = 'Anywhere'
+    AND (job_title_short ILIKE '%data_analyst%'
+    OR job_title_short ILIKE '%business_analyst%')
+GROUP BY
+    skill_name
+ORDER BY
+    job_count DESC
+LIMIT 6;
+
+-- Find the ranking of skills by the average salary associated with job postings mentioning them
+SELECT
+    skills AS skill_name,
+    ROUND(AVG(salary_year_avg),0) AS average_salary,
+    COUNT (job_postings_fact.job_id) AS job_count
+FROM
+    job_postings_fact
+    INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+    INNER JOIN skills_dim ON skills_dim.skill_id = skills_job_dim.skill_id
+WHERE
+    job_location = 'Anywhere'
+    AND salary_year_avg IS NOT NULL
+    AND (job_title_short ILIKE '%data_analyst%'
+    OR job_title_short ILIKE '%business_analyst%')
+GROUP BY
+    skill_name
+ORDER BY
+    average_salary DESC
+LIMIT 25;
+
