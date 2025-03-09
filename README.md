@@ -484,5 +484,8 @@ Completing this small project allowed me to acquire solid skills and increase my
 ##Insights
 From the analysis, several general insights emerged:
 
+For remote Business/Data Analyst job seekers, it’s essential to recognize that these roles often require a broader skill set, as the competition for remote positions is fierce.
+Remote roles typically offer higher earning potential (up to 20-30% more than in-office positions, depending on the region), though they make up a smaller proportion of the job market—roughly 10-15% of total analyst job openings globally.
+
 ## Closing Thoughts
 This project provided a thought-provoking analysis of the data science job market, with a focus on remote Data and Business Analyst roles. While the insights uncovered trends and patterns, they are not conclusive due to the broader dataset used. A more in-depth study, specifically targeting remote job listings, would be essential for drawing definitive conclusions. Nonetheless, I hope that it will inspires others to dive into SQL, get their hands dirty with real-world data, and uncover their own valuable findings.
