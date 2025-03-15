@@ -1,44 +1,44 @@
 # Introduction
-What would it take to work as a Business/Data Analyst, completely remotely and what would be the reward? To answer this such questions I dived into a large data science job market datataset and discovered high in-demands skills, top-paying jobs and remote friendly job platforms.
+What would it take to work as a Business/Data Analyst, completely remotely and what would be the reward? To answer such questions I dived into a large data science job market datataset and discovered high in-demands skills, top-paying jobs and remote friendly job platforms.
 
 All SQL queries are here: [project_sql folder](/project_sql/)
 
 # Background
 
-All analysis are based on large dataset of real-world data science job postings from 2023.
+All analysis are based on a large dataset of real-world data science job postings from 2023.
 
 ### The Questions I wanted to answer through my SQL queries were:
 
-- 1. What is the demand and salary difference between remote and-non remote Business/Data analyst jobs? Are the requirements lower or higher?
-- 2. What are the most in-demand skills for remote Business/Data analysts?
-- 3. What are the highest paying skills for remote Business/Data analysts?
-- 4. Which companies are remote friendly company?
-- 5. Where to apply for remote Business/Data analyst jobs? Will time zone be a problem?
-- 6. When to apply for remote analyst jobs?
+1. What is the demand and salary difference between remote and-non remote Business/Data Analyst jobs? Are the requirements lower or higher?
+2. What are the most in-demand skills for remote Business/Data Analysts?
+3. What are the highest paying skills for remote Business/Data Analysts?
+4. Which companies are remote friendly?
+5. Where to apply for remote Business/Data Analyst positions?
+6. When to apply for remote Business/Data Analyst jobs?
 
 # The tools I used
 
 - **SQL:** Querying the database and extracting critical insights.
-- **PostgreSQL:** Database management system
+- **PostgreSQL:** Database management system.
 - **Visual Studio Code:** Managing database and executing SQL queries.
-- **Excel:** Charting and SQL query results visualisation
+- **Excel:** Charting and SQL query results visualisation.
 - **Git & GitHub:** Sharing my SQL scripts and analysis.
 
 # The analysis
 
-Each query for this project aimed at investigating specific aspects of the data analyst job market. Each section will contain a summary of the findings, a form of visualisation, a comment and the SQL query used to retrieve the data. Here’s how I approached each question:
+Each query for this project aimed at investigating specific aspects of the remote Business/Data Analyst job market. Each section contains a summary of the findings, a form of visualisation, a comment and the SQL query used to retrieve the data. Here’s how I approached each question:
 
 ### 1. What is the demand and salary difference between remote and-non remote Business/Data analyst jobs? Are the requirements lower or higher?
 
 Non-remote jobs dominate the market, with 1 remote job posted every 14 non-remote jobs.
 
 | Location     | Job Published Count |
-|-------------|--------------------|
-| Non-Remote  | 256,573            |
-| Remote      | 18,469             |
+|--------------|--------------------|
+| Non-Remote   | 256,573            |
+| Remote       | 18,469             |
 
 
-Remote jobs have higher earning potential but represent a small portion of the market.
+Remote jobs have higher earning potential, but represent a small portion of the market. Additionally, remote jobs have a larger gap between the minimum and maximum registered salaries.
 If targeting high salaries, remote roles could be worth exploring, but competition may be higher due to a global applicant pool.
 
 | Location    | Average Salary | Max Salary | Min Salary |
@@ -47,7 +47,7 @@ If targeting high salaries, remote roles could be worth exploring, but competiti
 | Remote      | 98,480         | 650,000    | 16,500     |
 
 
-Salary transparency is better in remote jobs, but overall, most job postings lack salary info.
+Salary transparency is better in remote jobs, but most job postings lack salary info overall.
 
 | Location    | Jobs with Salary | Jobs without Salary | Salary Info Ratio |
 |-------------|------------------|---------------------|-------------------|
@@ -77,7 +77,7 @@ GROUP BY
     location
 ```
 
-Remote positions require on average a higher number of skills per role, which might indicate a more competitive or specialized job market or the need for more self-sufficiency. Preliminary results suggest that seekers aiming for remote roles should focus on broadening their skill set to match these requirements. The question will be addressed later in detail.
+Remote positions require on average a higher number of skills per role, which might indicate a more competitive or specialized job market or the need for more self-sufficiency. Preliminary results suggest that seekers aiming for remote roles should focus on broadening their skill set to match these requirements. This specific question will be addressed later in detail.
 
 
 | Location    | Job Count | Required Skills | Avg Skills per Job |
@@ -194,7 +194,7 @@ LIMIT 6;
 ```
 
 
-However, looking at the average salary based on those skills, Python and R would guarantee a higher average salary. This could be also interpreted as an indicator; where the job market rewards less available skills with a higher retribution.
+Looking at the average salary based on those skills, Python and R would guarantee a higher average salary. A higher salary could be interpreted as a market reward for deficiency in skill availabily. Acquire familiarity with Python and Tableau, in addition to possessing solid skills in Excel and SQL, would seem to be the perfect combination to stand out in a crowded remote job market.
 
 ![Top skills](./assets/2_Top_skills_with_salary.png)
 *Bar graph represents in how many remote Business/Data analyst jobs the above skills were mentioned; generated with Excel from SQL result.
@@ -230,13 +230,13 @@ ORDER BY
 LIMIT 6;
 ```
 
-To further prove this point and help those seeking a higher compensation, the next analysis will focus on the average salary for every skill required for remote Business/Data Analyst roles.
+To test if less available skills are better rewarded by the job market and to help those seeking a higher compensation, the next analysis will focus on the average salary for every skill required for remote Business/Data Analyst roles.
 
 ### 3. What are the highest paying skills for remote Business/Data analysts?
 
 Among the top paid 25 skills, those classified as niche, defined by using Job Count as measure of commonness, are better compensated in the remote data market.
 
-#### *Top 25 skills for Remote Data Analyst & Business Analyst Roles by average salary (2023)*
+#### *Top 25 skills for Remote Business/Data Analyst Roles by average salary (2023)*
 
 | Skill Name      | Average Salary | Job Count |
 |-----------------|----------------|-----------|
@@ -272,7 +272,7 @@ Below is a breakdown for the average salaries based on skill commonness:
 - Moderately Common Skills (Job Count 3 - 5): $147,221.80
 - Niche Skills (Job Count ≤ 2): $155,744.86
 
-Based on prelimiary results, it is possible to conclude that one should specialise in niche skills to increase the chances of a higher average salary.
+Based on prelimiary results, it is possible to conclude that Specialising in niche skills increases the chances of a higher average salary.
 
 ### Query used
 ```sql
@@ -300,7 +300,7 @@ Are there companies that foster remote work culture and whose career site one sh
 
 To answer this question I ranked companies by the amount of remote jobs for Business/Data Analysts posted in 2023. I also collected data about the number of required skills and unique required skills for those jobs.
 
-#### *Top 10 companies by count of vacancies published for Remote Data Analyst & Business Analyst Roles (2023)*
+#### *Top 10 companies by count of vacancies published for Remote Business/Data Analyst Roles (2023)*
 
 | Company Name                                | Job Count | Required Skills | Required Unique Skills |
 |---------------------------------------------|----------|----------------|------------------------|
@@ -326,9 +326,9 @@ To better visualise these takeaways, I asked ChatGPT to create a scatter plot.
 - Other areas: either generalized or specialized skill demands.
 
 ![Remote friendly companies difficulty](./assets/4_company_remote_friendly_difficulty.png)
-*Scatter plot displays which companies are "harder to apply to" based on average unique skills per job and average skills per job for top 10 companies with the highest number of vacancies for remote Business/Data Analysts posted in 2023; generated with ChatGPT from SQL result.*
+*Scatter plot displays which companies are "harder to apply to" based on average unique skills per job and average skills per job for the top 10 companies with the highest number of remote Business/Data Analyst vacancies posted in 2023; generated with ChatGPT from SQL result.*
 
-As the average salary is not available, we can only assume that top-right companies offer a higher compensation. If you are a seasoned Business/Data Analyst you might want to regulary check the career site of , whereas if you are looking entry-level roles you might want to consider monitoring bottom-left companies.
+As the average salary is not available, we can only assume that top-right companies offer a higher compensation. Seasoned Business/Data Analyst should consider to regulary check the career site of Talentify.io, Insight Global, and Get It Recruit - Finance, whereas entry-level role job seekers should consider monitoring bottom-left companies (i.e., TELUS AI Data Solutions and Peroptyx).
 
 ### Query used
 ```sql
@@ -350,10 +350,11 @@ GROUP BY company_name
 ORDER BY job_count DESC
 LIMIT 10;
 ```
-If you don't want to regularly check the career page of one the companies listed above, you can decide which job platform is best to monitor.
+As regularly checking the career site of multiple companies could be incovenient, the next analysis will focus on remote friendly job platforms.
 
 ### 5. Where to apply for remote analyst jobs?
-In order to maximize the chances of finding a remote analyst jobs, I decided to rank every job platform available in the database by the number of Business/Data Analyst remote jobs published in 2023.
+LinkedIn had by far the highest number of remote Business/Data Analyst jobs published in 2023, among the job platforms available in the dataset.
+Indeed and ZipRecruiter are a distant second and third.
 
 #### *Top 6 Job Platforms for Remote Data Analyst & Business Analyst Roles (2023)*
 
@@ -383,18 +384,14 @@ ORDER BY
 LIMIT 6;
 ```
 
-**Note: The following analysis are based on the the output of the query displayed above.**
-
-Once I narrowed down the platforms with the most remote analyst jobs, I decided to classify them based on the average salary.
-
-Although LinkedIn and Jobgether have the highest yearly average salary, the sample upon which this average is based is very low.
-- Average salary was only mentioned in 1.6% (154) job postings on LinkedIn, respectively in 1.9% (10) on Jobgether.
+LinkedIn and Jobgether have the highest yearly average salary.
+However, the sample upon which this average is based is very low. Average salary was only mentioned in 1.6% (154) job postings on LinkedIn, respectively in 1.9% (10) on Jobgether.
 
 ***Therefore, yearly average salary should not be used as a metric of comparison.***
 
 ![Salary info](./assets/6_Average_salary_info.png)
 
-*Bar graph represents the average of yearly salary for the remote Business/Data analyst jobs in the listed job platforms, while the line graph represents how often salary information was available in the job description; generated with Excel from SQL result*
+*Bar graph represents the average of yearly salary for the remote Business/Data Analyst jobs in the listed job platforms, while the line graph represents how often salary information was available in the job description; generated with Excel from SQL result.*
 
 ### Query used
 ```sql
@@ -417,9 +414,8 @@ ORDER BY
     job_published_count DESC
 LIMIT 6;
 ```
-Location salary
 
-As salary is not a clear indication, I decided turn my attention to two other ther indicators of job remuneration quality, namely the location of the posted jobs and the provvision of job health insurance.
+As salary is not a clear indication, the provvision of health insurance can be another idicator of the remunarion quality of an open vacany.
 
 ###
 - Snagajob is the platform with the highest relative percentage of health insurance mention as part of the compensation package; with 1 out of 2 job descriptions mentioning health insurance.
@@ -427,7 +423,7 @@ As salary is not a clear indication, I decided turn my attention to two other th
 - ZipRecruiter is second both in terms of relative and overall health insurance mentioning. 
 
 ![Salary info](./assets/6_Health_insurance_mention.png)
-*Bar graph represents how frequenctly health insurance was mentioned in job descriptions of remote Business/Data analyst roles in the listed job platforms. Whole numbers inside the bars are the number of job posted that mention health insurance; generated with Excel from SQL result*
+*Bar graph represents how frequenctly health insurance was mentioned in the job descriptions of remote Business/Data Analyst roles in the listed job platforms. The whole numbers inside the bars are the number of jobs posted that mention health insurance; generated with Excel from SQL result.*
 
 ### Query used
 ```sql
@@ -448,16 +444,16 @@ ORDER BY
 LIMIT 6;
 ```
 ### When to apply for remote analyst jobs?
-Based on the platforms with the highest number of remote Businss/Data analyst vacancies posted in 2023, the next question to answer is when are most positions published.
+Based on the platforms with the highest number of remote Businss/Data Analyst vacancies posted in 2023, the next question to answer is when are most positions published.
 
-***Most vacancies were posted between October and January on LinkedIn, with summer being the "slowest" period.***
+Most vacancies were posted between October and January on LinkedIn, with summer being the "slowest" period.
 ![LinkedIn month posting](./assets/5_LinkedIn_month.png)
-*Line graph represents when were remote Business/Data Analyst vacancies listed in 2023 on LinkedIn; generated with Excel from SQL result*
+*Line graph represents when were remote Business/Data Analyst vacancies listed in 2023 on LinkedIn; generated with Excel from SQL result.*
 
 
-***ZipRecruiter and Indeed both show a peak in vacancies posting in January, with June representing a second peak for Indeed solely. The end of 2023 was the "slowest" period.***
+ZipRecruiter and Indeed both show a peak in vacancies posted in January, with June representing a second peak for Indeed solely. The end of 2023 was the "slowest" period.
 ![LinkedIn month posting](./assets/5_Indeed_ZipRecruiter_month.png)
-*Line graph represents when were remote Business/Data Analyst vacancies listed in 2023 on Indeed and ZipRecruiter; generated with Excel from SQL result*
+*Line graph represents when were remote Business/Data Analyst vacancies listed in 2023 on Indeed and ZipRecruiter; generated with Excel from SQL result.*
 
 ### Query used
 ```sql
@@ -476,16 +472,26 @@ GROUP BY job_platform, job_posted_month
 # What I learned
 Completing this small project allowed me to acquire solid skills and increase my confidence in:
 
-🔍 Art of Query Crafting: I started with foundational SQL techniques like basic queries, wildcards, and aggregations, then advanced to complex data manipulation by seamlessly merging tables and leveraging WITH clauses to optimize query efficiency and readability.
+🔍 Art of Query Crafting: I started with foundational SQL techniques like basic queries, wildcards, and aggregations. I consequently advanced to complex data manipulation by seamlessly merging tables and leveraging WITH clauses to optimize query efficiency and readability.
 
 📊 Analytical Mindset: I turned raw data into actionable insights by crafting powerful SQL queries and enhancing findings with dynamic Excel visualizations.
 
 # Conclusions
-##Insights
-From the analysis, several general insights emerged:
 
-For remote Business/Data Analyst job seekers, it’s essential to recognize that these roles often require a broader skill set, as the competition for remote positions is fierce.
-Remote roles typically offer higher earning potential (up to 20-30% more than in-office positions, depending on the region), though they make up a smaller proportion of the job market—roughly 10-15% of total analyst job openings globally.
+From the analysis, several insights for remote Business/Data Analyst roles emerged:
+
+
+1. Remote roles typically offer higher earning potential (up to 20-30% more than in-office positions, depending on the region), though they make up a smaller proportion of the job market (roughly 10-15% of total job openings).
+Remote roles often require a broader skill set, possibly resulting from a wider applicant pool and precondition of indipendency.
+
+2. Excel, SQL, Python and Tableau (in order of importance) are the suggested requested skills to stand out in the remote data job market.
+3. Specialising in niche skills can guarantee a much higher salary (almost double!).
+
+4. Entry-level remote friendly companies are TELUS AI Data Solutions and Peroptyx. Seasoned Business/Data Analysts should consider regulary checking the openings of Talentify.io, Insight Global, and Get It Recruit - Finance.
+
+5. LinkedIn, Indeed and ZipRecruiter appear to be the best platforms where to look for remote roles.
+
+6. January is the month where most remote vacancies where posted in 2023.
 
 ## Closing Thoughts
-This project provided a thought-provoking analysis of the data science job market, with a focus on remote Data and Business Analyst roles. While the insights uncovered trends and patterns, they are not conclusive due to the broader dataset used. A more in-depth study, specifically targeting remote job listings, would be essential for drawing definitive conclusions. Nonetheless, I hope that it will inspires others to dive into SQL, get their hands dirty with real-world data, and uncover their own valuable findings.
+This project provided a thought-provoking analysis of the data science job market, with a focus on remote Business and Data Analyst roles. While the insights uncovered trends and patterns, they are not conclusive due to the size of dataset used. A more in-depth study, specifically targeting remote job listings, would be essential for drawing definitive conclusions. Nonetheless, is is hoped that this excercise will have inspired others to dive into SQL, get their hands dirty with real-world data, and uncover their own valuable findings.
