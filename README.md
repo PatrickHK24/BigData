@@ -28,7 +28,7 @@ All analysis are based on a large dataset of real-world data science job posting
 
 Each query for this project aimed at investigating specific aspects of the remote Business/Data Analyst job market. Each section contains a summary of the findings, a form of visualisation, a comment and the SQL query used to retrieve the data. Here’s how I approached each question:
 
-### 1. What is the demand and salary difference between remote and-non remote Business/Data analyst jobs? Are the requirements lower or higher?
+### 1. What is the demand and salary difference between remote and-non remote Business/Data Analyst jobs? Are the requirements lower or higher?
 
 Non-remote jobs dominate the market, with 1 remote job posted every 14 non-remote jobs.
 
