@@ -198,7 +198,7 @@ Looking at the average salary based on those skills, Python and R would guarante
 
 ![Top skills](./assets/2_Top_skills_with_salary.png)
 *Bar graph represents in how many remote Business/Data analyst jobs the above skills were mentioned; generated with Excel from SQL result.
-Note: On average, salary information was only available in 56% of jobs.*
+Note: On average, salary information was only available in 5.6% of jobs.*
 
 ### Query used
 ```sql
