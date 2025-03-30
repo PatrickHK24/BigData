@@ -272,7 +272,7 @@ Below is a breakdown for the average salaries based on skill commonness:
 - Moderately Common Skills (Job Count 3 - 5): $147,221.80
 - Niche Skills (Job Count ≤ 2): $155,744.86
 
-Based on prelimiary results, it is possible to conclude that Specialising in niche skills increases the chances of a higher average salary.
+Based on prelimiary results, it is possible to conclude that specialising in niche skills increases the chances of a higher average salary.
 
 ### Query used
 ```sql
@@ -295,7 +295,7 @@ ORDER BY
     average_salary DESC
 LIMIT 25;
 ```
-### 4. Which are remote friendly company?
+### 4. Which companies are remote friendly?
 Are there companies that foster remote work culture and whose career site one should check regularly?
 
 To answer this question I ranked companies by the amount of remote jobs for Business/Data Analysts posted in 2023. I also collected data about the number of required skills and unique required skills for those jobs.
@@ -350,7 +350,7 @@ GROUP BY company_name
 ORDER BY job_count DESC
 LIMIT 10;
 ```
-As regularly checking the career site of multiple companies could be incovenient, the next analysis will focus on remote friendly job platforms.
+As regularly checking the career site of multiple companies could be incnovenient, the next analysis will focus on remote friendly job platforms.
 
 ### 5. Where to apply for remote analyst jobs?
 LinkedIn had by far the highest number of remote Business/Data Analyst jobs published in 2023, among the job platforms available in the dataset.
