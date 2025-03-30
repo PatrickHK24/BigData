@@ -106,9 +106,9 @@ GROUP BY
     location;
 ```
 
-The remote job market offers a relatively higher proportion of fleixble contracts, whereas the non-remote market overwhelmingly favors full-time contracts.
+The remote job market offers a relatively higher proportion of flexible contracts, whereas the non-remote market overwhelmingly favors full-time contracts.
 
-| Location    | Full-Time Count | Unknown Count | Non-Full-Time Count | FT/NFT Ratio |
+| Location    | Full-Time Count | Unknown Count | Non-Full-Time Count | Full-Time/Non-Full-Time Ratio |
 |-------------|---------------- |---------------|---------------------|--------------|
 | Non-Remote  | 228,530         | 5,724         | 22,319              | 10           |
 | Remote      | 14,354          | 664           | 3,451               | 4            |
@@ -157,7 +157,7 @@ GROUP BY
     location;
 ```
 
-### 2. What are the most in demand skills for remote Business/Data Analysts?
+### 2. What are the most in-demand skills for remote Business/Data Analysts?
 
 SQL is by far the most requested skill across all platforms, followed in a tight race by Excel, Python and Tableau.
 
