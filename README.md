@@ -7,9 +7,9 @@ All SQL queries are here: [project_sql folder](/project_sql/)
 
 All analysis are based on a large dataset of real-world data science job postings from 2023.
 
-### The Questions I wanted to answer through my SQL queries were:
+### The questions I wanted to answer through my SQL queries were:
 
-1. What is the demand and salary difference between remote and-non remote Business/Data Analyst jobs? Are the requirements lower or higher?
+1. What are the demand and salary differences between remote and non-remote Business/Data Analyst jobs? Are the requirements higher or lower?
 2. What are the most in-demand skills for remote Business/Data Analysts?
 3. What are the highest paying skills for remote Business/Data Analysts?
 4. Which companies are remote friendly?
@@ -21,14 +21,14 @@ All analysis are based on a large dataset of real-world data science job posting
 - **SQL:** Querying the database and extracting critical insights.
 - **PostgreSQL:** Database management system.
 - **Visual Studio Code:** Managing database and executing SQL queries.
-- **Excel:** Charting and SQL query results visualisation.
+- **Excel:** Charting and visualisation of SQL query results.
 - **Git & GitHub:** Sharing my SQL scripts and analysis.
 
 # The analysis
 
 Each query for this project aimed at investigating specific aspects of the remote Business/Data Analyst job market. Each section contains a summary of the findings, a form of visualisation, a comment and the SQL query used to retrieve the data. Here’s how I approached each question:
 
-### 1. What is the demand and salary difference between remote and-non remote Business/Data Analyst jobs? Are the requirements lower or higher?
+### 1. What are the demand and salary differences between remote and non-remote Business/Data Analyst jobs? Are the requirements higher or lower?
 
 Non-remote jobs dominate the market, with 1 remote job posted every 14 non-remote jobs.
 
@@ -38,8 +38,8 @@ Non-remote jobs dominate the market, with 1 remote job posted every 14 non-remot
 | Remote       | 18,469             |
 
 
-Remote jobs have higher earning potential, but represent a small portion of the market. Additionally, remote jobs have a larger gap between the minimum and maximum registered salaries.
-If targeting high salaries, remote roles could be worth exploring, but competition may be higher due to a global applicant pool.
+Remote jobs have a higher earning potential and a larger gap between the minimum and maximum registered salaries.
+If targeting high salaries, remote roles could be worth exploring, but competition may be higher due to a global applicant pool and fewer opportunities available.
 
 | Location    | Average Salary | Max Salary | Min Salary |
 |-------------|----------------|------------|------------|
@@ -47,12 +47,12 @@ If targeting high salaries, remote roles could be worth exploring, but competiti
 | Remote      | 98,480         | 650,000    | 16,500     |
 
 
-Salary transparency is better in remote jobs, but most job postings lack salary info overall.
+Salary transparency is better in remote job postings, but most of them lack salary disclosure overall.
 
-| Location    | Jobs with Salary | Jobs without Salary | Salary Info Ratio |
-|-------------|------------------|---------------------|-------------------|
-| Non-Remote  | 6,372            | 250,201             | 2.5%              |
-| Remote      | 840              | 17,629              | 4.5%              |
+| Location    | Jobs with Salary | Jobs without Salary | Salary disclosure Ratio |
+|-------------|------------------|---------------------|-------------------------|
+| Non-Remote  | 6,372            | 250,201             | 2.5%                    |
+| Remote      | 840              | 17,629              | 4.5%                    |
 
 
 ### Query used
@@ -66,9 +66,9 @@ SELECT
     ROUND(AVG(salary_year_avg),0) AS average_salary,
     MAX (salary_year_avg) AS max_salary,
     MIN (salary_year_avg) AS min_salary,
-    SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END) AS jobs_with_salary, -- Count the number of jobs with info
-    SUM(CASE WHEN salary_year_avg IS NULL THEN 1 ELSE 0 END) AS jobs_without_salary, -- Count the number of jobs without info
-    ROUND((SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END)*100.0/COUNT(job_id)),1) AS salary_info_ratio -- calculate the ratio of jobs with salary info as a percentage
+    SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END) AS jobs_with_salary,
+    SUM(CASE WHEN salary_year_avg IS NULL THEN 1 ELSE 0 END) AS jobs_without_salary,
+    ROUND((SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END)*100.0/COUNT(job_id)),1) AS salary_info_ratio
 FROM
     job_postings_fact
 WHERE
@@ -80,10 +80,10 @@ GROUP BY
 Remote positions require on average a higher number of skills per role, which might indicate a more competitive or specialized job market or the need for more self-sufficiency. Preliminary results suggest that seekers aiming for remote roles should focus on broadening their skill set to match these requirements. This specific question will be addressed later in detail.
 
 
-| Location    | Job Count | Required Skills | Avg Skills per Job |
-|-------------|-----------|-----------------|--------------------|
-| Non-Remote  | 256,573   | 821,237         | 3.2                |
-| Remote      | 18,469    | 66,390          | 3.59               |
+| Location    | Job Count | Required Skills | Avg Skills required per Job |
+|-------------|-----------|-----------------|-----------------------------|
+| Non-Remote  | 256,573   | 821,237         | 3.2                         |
+| Remote      | 18,469    | 66,390          | 3.59                        |
 
 
 
@@ -106,12 +106,12 @@ GROUP BY
     location;
 ```
 
-The remote job market offers a relatively higher proportion of flexible contracts, whereas the non-remote market overwhelmingly favors full-time contracts.
+The remote job market offers a relatively higher proportion of flexible contracts, whereas the non-remote market overwhelmingly favours full-time contracts.
 
 | Location    | Full-Time Count | Unknown Count | Non-Full-Time Count | Full-Time/Non-Full-Time Ratio |
-|-------------|---------------- |---------------|---------------------|--------------|
-| Non-Remote  | 228,530         | 5,724         | 22,319              | 10           |
-| Remote      | 14,354          | 664           | 3,451               | 4            |
+|-------------|---------------- |---------------|---------------------|-------------------------------|
+| Non-Remote  | 228,530         | 5,724         | 22,319              | 10                            |
+| Remote      | 14,354          | 664           | 3,451               | 4                             |
 
 ### Query used
 ```sql
