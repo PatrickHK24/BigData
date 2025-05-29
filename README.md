@@ -197,7 +197,7 @@ LIMIT 6;
 Looking at the average salary based on those skills, Python and R would guarantee a higher average salary. A higher salary could be interpreted as a market reward for deficiency in skill availabily. Acquire familiarity with Python and Tableau, in addition to possessing solid skills in Excel and SQL, would seem to be the perfect combination to stand out in a crowded remote job market.
 
 ![Top skills](./assets/2_Top_skills_with_salary.png)
-*Bar graph represents in how many remote Business/Data analyst jobs the above skills were mentioned; generated with Excel from SQL result.
+*Bar graph represents the average yearly salary for remote Business/Data analyst jobs where the above skills were mentioned; generated with Excel from SQL result.
 Note: On average, salary information was only available in 5.6% of jobs.*
 
 ### Query used
@@ -230,13 +230,13 @@ ORDER BY
 LIMIT 6;
 ```
 
-To test if less available skills are better rewarded by the job market and to help those seeking a higher compensation, the next analysis will focus on the average salary for every skill required for remote Business/Data Analyst roles.
+To test if less common skills are better rewarded by the job market and to help those seeking a higher compensation, the next analysis will focus on the average salary for a broader spectrum of skills required for remote Business/Data Analyst roles.
 
 ### 3. What are the highest paying skills for remote Business/Data analysts?
 
 Among the top paid 25 skills, those classified as niche, defined by using Job Count as measure of commonness, are better compensated in the remote data market.
 
-#### *Top 25 skills for Remote Business/Data Analyst Roles by average salary (2023)*
+#### *Top 25 skills for Remote Business/Data Analyst Roles by average salary*
 
 | Skill Name      | Average Salary | Job Count |
 |-----------------|----------------|-----------|
@@ -298,37 +298,37 @@ LIMIT 25;
 ### 4. Which companies are remote friendly?
 Are there companies that foster remote work culture and whose career site one should check regularly?
 
-To answer this question I ranked companies by the amount of remote jobs for Business/Data Analysts posted in 2023. I also collected data about the number of required skills and unique required skills for those jobs.
+To answer this question I ranked companies by number of remote jobs for Business/Data Analysts posted in 2023. Additionally, I also collected data about the number of required skills and unique required skills for those jobs.
 
-#### *Top 10 companies by count of vacancies published for Remote Business/Data Analyst Roles (2023)*
+#### *Top 10 companies by number of Remote Business/Data Analyst job postings published*
 
 | Company Name                                | Job Count | Required Skills | Required Unique Skills |
-|---------------------------------------------|----------|----------------|------------------------|
-| Get It Recruit - Information Technology     | 635      | 2468           | 113                    |
-| Dice                                        | 341      | 1334           | 100                    |
-| TELUS International AI Data Solutions       | 237      | 148            | 7                      |
-| Peroptyx                                    | 187      | 0              | 0                      |
-| Crossover                                   | 137      | 160            | 6                      |
-| TELUS International                         | 122      | 111            | 6                      |
-| Robert Half                                 | 104      | 266            | 50                     |
-| Insight Global                              | 103      | 319            | 58                     |
-| Get It Recruit - Finance                    | 89       | 304            | 48                     |
-| Talentify.io                                | 87       | 301            | 53                     |
+|---------------------------------------------|-----------|-----------------|------------------------|
+| Get It Recruit - Information Technology     | 635       | 2468            | 113                    |
+| Dice                                        | 341       | 1334            | 100                    |
+| TELUS International AI Data Solutions       | 237       | 148             | 7                      |
+| Peroptyx                                    | 187       | 0               | 0                      |
+| Crossover                                   | 137       | 160             | 6                      |
+| TELUS International                         | 122       | 111             | 6                      |
+| Robert Half                                 | 104       | 266             | 50                     |
+| Insight Global                              | 103       | 319             | 58                     |
+| Get It Recruit - Finance                    | 89        | 304             | 48                     |
+| Talentify.io                                | 87        | 301             | 53                     |
 
 
-TELUS AI Data Solutions and Peroptyx have much lower skill requirements, indicating simpler or more standardized roles.
-Get It Recruit - IT and Dice require many skills per job but have fewer unique skills, indicating more standardized skill sets.
+TELUS AI Data Solutions and Peroptyx have much lower skill requirements, indicating simpler or more standardised roles.
+Get It Recruit - IT and Dice require many skills per job but have fewer unique skills, indicating more standardised skill sets.
 Talentify.io, Insight Global, and Get It Recruit - Finance demand the highest unique and total skills per job, indicating diverse skill requirements.
 
 To better visualise these takeaways, I asked ChatGPT to create a scatter plot.
 - Top-right companies: hardest to apply (high unique and total skills required).
-- Bottom-left companies: asiest to apply (low skill requirements).
-- Other areas: either generalized or specialized skill demands.
+- Bottom-left companies: easiest to apply (low skill requirements).
+- Other areas: either generalised or specialised skill demands.
 
 ![Remote friendly companies difficulty](./assets/4_company_remote_friendly_difficulty.png)
 *Scatter plot displays which companies are "harder to apply to" based on average unique skills per job and average skills per job for the top 10 companies with the highest number of remote Business/Data Analyst vacancies posted in 2023; generated with ChatGPT from SQL result.*
 
-As the average salary is not available, we can only assume that top-right companies offer a higher compensation. Seasoned Business/Data Analyst should consider to regulary check the career site of Talentify.io, Insight Global, and Get It Recruit - Finance, whereas entry-level role job seekers should consider monitoring bottom-left companies (i.e., TELUS AI Data Solutions and Peroptyx).
+As the average salary is not available, we can only assume that top-right companies offer a higher compensation. Seasoned Business/Data Analysts should consider regulary checking the career site of Talentify.io, Insight Global, and Get It Recruit - Finance, whereas entry-level role job seekers should consider monitoring bottom-left companies (i.e., TELUS AI Data Solutions and Peroptyx).
 
 ### Query used
 ```sql
@@ -350,13 +350,13 @@ GROUP BY company_name
 ORDER BY job_count DESC
 LIMIT 10;
 ```
-As regularly checking the career site of multiple companies could be incnovenient, the next analysis will focus on remote friendly job platforms.
+As regularly checking the career site of multiple companies could be inconvenient, the next analysis will focus on remote friendly job platforms.
 
 ### 5. Where to apply for remote analyst jobs?
 LinkedIn had by far the highest number of remote Business/Data Analyst jobs published in 2023, among the job platforms available in the dataset.
 Indeed and ZipRecruiter are a distant second and third.
 
-#### *Top 6 Job Platforms for Remote Data Analyst & Business Analyst Roles (2023)*
+#### *Top 6 Job Platforms for Remote Data Analyst & Business Analyst Roles*
 
 | Job Platform       | Job Published Count |
 |--------------------|---------------------|
