@@ -391,7 +391,7 @@ However, the sample upon which this average is based is very low. Average salary
 
 ![Salary info](./assets/6_Average_salary_info.png)
 
-*Bar graph represents the average of yearly salary for the remote Business/Data Analyst jobs in the listed job platforms, while the line graph represents how often salary information was available in the job description; generated with Excel from SQL result.*
+*Bar graph represents the average yearly salary for remote Business/Data Analyst jobs in the listed job platforms, while the line chart represents how often salary information was available in the job descriptions; generated with Excel from SQL result.*
 
 ### Query used
 ```sql
@@ -400,9 +400,9 @@ SELECT
     job_via AS job_platform,
     COUNT(job_id) AS job_published_count,
     ROUND(AVG(salary_year_avg),0) AS average_salary,
-    SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END) AS jobs_with_salary, -- Count the number of jobs with info
-    SUM(CASE WHEN salary_year_avg IS NULL THEN 1 ELSE 0 END) AS jobs_without_salary, -- Count the number of jobs without info
-    ROUND((SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END)*100.0/COUNT(job_id)),1) AS salary_info_ratio -- calculate the ratio of jobs with salary info as a percentage
+    SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END) AS jobs_with_salary,
+    SUM(CASE WHEN salary_year_avg IS NULL THEN 1 ELSE 0 END) AS jobs_without_salary,
+    ROUND((SUM(CASE WHEN salary_year_avg IS NOT NULL THEN 1 ELSE 0 END)*100.0/COUNT(job_id)),1) AS salary_info_ratio
 FROM
     job_postings_fact
 WHERE
@@ -415,23 +415,23 @@ ORDER BY
 LIMIT 6;
 ```
 
-As salary is not a clear indication, the provvision of health insurance can be another idicator of the remunarion quality of an open vacany.
+As salary is not a clear indication, the provvision of health insurance can be another idicator of the remuneration quality of a remote open vacany.
 
 ###
-- Snagajob is the platform with the highest relative percentage of health insurance mention as part of the compensation package; with 1 out of 2 job descriptions mentioning health insurance.
+- Snagajob is the platform with the highest relative percentage of health insurance mentioned as part of the compensation package. One in two job descriptions mentions health insurance.
 - LinkedIn is the platform with the overall highest number of vacancies that remunerate employees with health insurance.
 - ZipRecruiter is second both in terms of relative and overall health insurance mentioning. 
 
 ![Salary info](./assets/6_Health_insurance_mention.png)
-*Bar graph represents how frequenctly health insurance was mentioned in the job descriptions of remote Business/Data Analyst roles in the listed job platforms. The whole numbers inside the bars are the number of jobs posted that mention health insurance; generated with Excel from SQL result.*
+*Bar graph represents how frequently health insurance is mentioned in the job descriptions of remote Business/Data Analyst roles in the listed job platforms. The whole numbers inside the bars are the number of jobs posted that mention health insurance; generated with Excel from SQL result.*
 
 ### Query used
 ```sql
 SELECT
     job_via AS job_platform,
     COUNT(job_id) AS job_published_count,
-    SUM (CASE WHEN job_health_insurance IS TRUE THEN 1 ELSE 0 END) AS jobs_with_health_insurance,-- Count the number of jobs with health insurance
-    SUM (CASE WHEN job_health_insurance IS FALSE THEN 1 ELSE 0 END) AS jobs_without_health_insurance-- Count the number of jobs without health insurance
+    SUM (CASE WHEN job_health_insurance IS TRUE THEN 1 ELSE 0 END) AS jobs_with_health_insurance,
+    SUM (CASE WHEN job_health_insurance IS FALSE THEN 1 ELSE 0 END) AS jobs_without_health_insurance
 FROM
     job_postings_fact
 WHERE
@@ -443,17 +443,19 @@ ORDER BY
     job_published_count DESC
 LIMIT 6;
 ```
-### When to apply for remote analyst jobs?
+### 6. When to apply for remote Business/Data Analyst jobs?
 Based on the platforms with the highest number of remote Businss/Data Analyst vacancies posted in 2023, the next question to answer is when are most positions published.
 
 Most vacancies were posted between October and January on LinkedIn, with summer being the "slowest" period.
+
 ![LinkedIn month posting](./assets/5_LinkedIn_month.png)
-*Line graph represents when were remote Business/Data Analyst vacancies listed in 2023 on LinkedIn; generated with Excel from SQL result.*
+*Line graph represents when were remote Business/Data Analyst vacancies published in 2023 on LinkedIn; generated with Excel from SQL result.*
 
 
 ZipRecruiter and Indeed both show a peak in vacancies posted in January, with June representing a second peak for Indeed solely. The end of 2023 was the "slowest" period.
+
 ![LinkedIn month posting](./assets/5_Indeed_ZipRecruiter_month.png)
-*Line graph represents when were remote Business/Data Analyst vacancies listed in 2023 on Indeed and ZipRecruiter; generated with Excel from SQL result.*
+*Line graph represents when were remote Business/Data Analyst vacancies published in 2023 on Indeed and ZipRecruiter; generated with Excel from SQL result.*
 
 ### Query used
 ```sql
@@ -472,9 +474,9 @@ GROUP BY job_platform, job_posted_month
 # What I learned
 Completing this small project allowed me to acquire solid skills and increase my confidence in:
 
-🔍 Art of Query Crafting: I started with foundational SQL techniques like basic queries, wildcards, and aggregations. I consequently advanced to complex data manipulation by seamlessly merging tables and leveraging WITH clauses to optimize query efficiency and readability.
+🔍 Art of Query Crafting: I started with foundational SQL techniques like basic queries, wildcards, and aggregations. I consequently advanced to complex data manipulation by seamlessly merging tables and leveraging WITH clauses to optimise query efficiency and readability.
 
-📊 Analytical Mindset: I turned raw data into actionable insights by crafting powerful SQL queries and enhancing findings with dynamic Excel visualizations.
+📊 Analytical Mindset: I turned raw data into actionable insights by crafting powerful SQL queries and enhancing findings with dynamic Excel visualisations.
 
 # Conclusions
 
@@ -494,4 +496,4 @@ Remote roles often require a broader skill set, possibly resulting from a wider 
 6. January is the month where most remote vacancies where posted in 2023.
 
 ## Closing Thoughts
-This project provided a thought-provoking analysis of the data science job market, with a focus on remote Business and Data Analyst roles. While the insights uncovered trends and patterns, they are not conclusive due to the size of dataset used. A more in-depth study, specifically targeting remote job listings, would be essential for drawing definitive conclusions. Nonetheless, is is hoped that this excercise will have inspired others to dive into SQL, get their hands dirty with real-world data, and uncover their own valuable findings.
+This project provided a thought-provoking analysis of the data science job market, with a focus on remote Business and Data Analyst roles. While the insights uncovered trends and patterns, they are not conclusive due to the size of dataset used. A more in-depth study, specifically targeting remote job listings, would be essential for drawing definitive conclusions. Nonetheless, it is hoped that this excercise will have inspired others to dive into SQL, get their hands dirty with real-world data, and uncover their own valuable findings.
